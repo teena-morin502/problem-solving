@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch JSON Example (without async/await)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .post {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    .post h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .post p {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Posts</h1>
+  <div id="posts"></div> <!-- This is where the fetched data will be rendered -->
+  <script>
+    // URL of the JSON data (API endpoint)
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+    // Fetch data and render it in HTML without async/await
+    fetch(apiUrl)
+      .then(function(response) {
+        // Check if the request was successful
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // Convert response to JSON
+        return response.json();
+      })
+      .then(function(data) {
+        // Select the container where we want to display the posts
+        const postsContainer = document.getElementById('posts');
+        // Loop through each post in the JSON data and create HTML for each
+        // data.forEach(function(post) {
+        for(i=0;i<=data.length;i++){
+          // Create a div for each post
+          const postDiv = document.createElement('div');
+          postDiv.classList.add('post');
+          // Create HTML structure for each post
+          postDiv.innerHTML = `
+            <h3>${data[i].title}</h3>
+            <p>${data[i].body}</p>
+            <h2>${[i]}<h2>
+          `;
+          // Append each postDiv to the postsContainer
+          postsContainer.appendChild(postDiv);
+        }
+      })
+      .catch(function(error) {
+        // Handle any errors
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  </script>
+</body>
+</html>
+
+
+
+

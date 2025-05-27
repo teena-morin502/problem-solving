@@ -1,0 +1,42 @@
+<style>
+    *{
+  background-color: black;
+  color: brown;
+    }
+</style>
+
+<html>
+   
+<body>
+    <h1>Guess the number 1-10</h1>
+    <h3>if score comes to 5 you lose the match</h3>
+<input id="guess number">
+<button onclick="check()">check</button>
+<p id="result">You are wrong/right</p>
+<p id="score">Score:10</p>
+<script>
+   let guessnumber=document.getElementById("guess number");
+   let result=document.getElementById("result");
+   let randomNumber=Math.floor(Math.random()*10)+1;
+   let score=document.getElementById("score");
+   let mark=10;
+   function check(){
+    let enteredNumber=guessnumber.value
+if(randomNumber==enteredNumber){
+    console.log("right");
+    alert("YOU WON...");
+    result.textContent="You are RIGHT";
+    
+}else{
+    mark=mark-1;
+    score.textContent="SCORE :"+mark;
+    console.log("wrong");
+    result.textContent="You are WRONG";
+    if(mark<=5){
+        alert("YOU LOSE..." )
+    }
+}
+   }
+</script>
+</body>
+</html>

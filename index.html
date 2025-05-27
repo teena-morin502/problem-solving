@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="header">hi world</h1>
+   
+   <input id="num1" ></input>
+   <input id="num2" ></input>
+   <button onclick=resul()>add</button>
+   <p id="result">result</p>
+   <button onclick=change()>finish</button>
+<script>
+let header=document.getElementById("header");
+let add=document.getElementById("total")
+
+let let1=document.getElementById("num1");
+let let2=document.getElementById("num2");
+let result=document.getElementById("result");
+
+
+function resul(){
+  let let1value=Number(let1.value)  ;
+let let2value=Number(let2.value);
+let total=let1value+let2value;
+result.textContent="result = " +total;
+}
+
+console.log(header.textContent);
+function change(){
+  header.textContent="bye world"
+}
+</script>    
+</body>
+</html>
